@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { Search, User, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "@/lib/firebase";
+
 
 const Header = () => {
   return (
@@ -36,6 +39,15 @@ const Header = () => {
             <Search className="h-5 w-5" />
             <span className="sr-only">Search</span>
           </Button>
+          <Button
+  variant="ghost"
+  size="icon"
+  onClick={() => signInWithPopup(auth, provider)}
+>
+  <User className="h-5 w-5" />
+  <span className="sr-only">Account</span>
+</Button>
+
           <Button variant="ghost" size="icon">
             <User className="h-5 w-5" />
             <span className="sr-only">Account</span>
